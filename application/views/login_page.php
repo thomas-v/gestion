@@ -16,9 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <form class="register-form">
             <input type="text" placeholder="pseudo"/>
             <input type="password" placeholder="mot de passe"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
+            <input type="text" placeholder="Adresse mail"/>
+            <button>Enregistrer</button>
+            <p class="message">Déjà enregistré? <a href="#">Connectez vous</a></p>
         </form>
         <form class="login-form">
             <input type="text" placeholder="pseudo"/>
