@@ -13,25 +13,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="login-page">
     <div class="form">
-        <form class="register-form">
-            <input type="text" placeholder="pseudo"/>
-            <input type="password" placeholder="mot de passe"/>
-            <input type="text" placeholder="Adresse mail"/>
-            <button>Enregistrer</button>
+        <?= form_open('home/register_validation', array('class' => 'register-form')); ?>
+            <?php
+                $pseudo = array('name'=>'pseudo', 'placeholder'=>'pseudo');
+                echo form_input($pseudo);
+            ?>
+            <?php
+                $password = array('name'=>'password', 'placeholder'=>'mot de passe');
+                echo form_input($password);
+            ?>
+            <?php
+                $email = array('name'=>'email', 'placeholder'=>'Adresse mail');
+                echo form_input($email);
+            ?>
+            <?= form_submit('submit', 'Enregistrer'); ?>
             <p class="message">Déjà enregistré? <a href="#">Connectez vous</a></p>
-        </form>
-        <form class="login-form">
-            <input type="text" placeholder="pseudo"/>
-            <input type="password" placeholder="mot de passe"/>
-            <button>Se connecter</button>
-            <p class="message">Pas enregistré? <a href="#">Créez un compte</a></p>
-        </form>
+        <?= form_close(); ?>
+        <?= form_open('home/login_validation', array('class' => 'login-form')); ?>
+            <?php
+                $pseudo = array('name'=>'pseudo', 'placeholder'=>'pseudo');
+                echo form_input($pseudo);
+            ?>
+            <?php
+                $password = array('name'=>'password', 'placeholder'=>'mot de passe');
+                echo form_input($password);
+            ?>
+            <?= form_submit('submit', 'Se connecter'); ?>
+            <p class="message">Pas enregistré? <a href="">Créez un compte</a></p>
+        <?= form_close(); ?>
     </div>
 </div>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
 <script>
     $('.message a').click(function(){
         $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        return false;
     });
 </script>
 
