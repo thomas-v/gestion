@@ -1,11 +1,19 @@
 <?php
 
-Class login_database extends CI_Model {
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// Insert registration data in database
-public function registration_insert($data) {
+Class Login_database_model extends CI_Model {
 
-// Query to check whether username already exist or not
+    function __construct()
+    {
+        // Call the Model constructor
+        parent::__construct();
+    }
+
+    // Insert registration data in database
+    public function registration_insert($data) {
+
+    // Query to check whether username already exist or not
         $condition = "user_name =" . "'" . $data['user_name'] . "'";
         $this->db->select('*');
         $this->db->from('user_login');
@@ -14,7 +22,7 @@ public function registration_insert($data) {
         $query = $this->db->get();
         if ($query->num_rows() == 0) {
 
-// Query to insert data in database
+    // Query to insert data in database
             $this->db->insert('user_login', $data);
             if ($this->db->affected_rows() > 0) {
                 return true;
@@ -55,6 +63,21 @@ public function registration_insert($data) {
             return $query->result();
         } else {
             return false;
+        }
+    }
+
+    public function get_by_email($email){
+        $condition = "user_email =" . "'" . $email . "'";
+        $this->db->select('*');
+        $this->db->from('user_login');
+        $this->db->where($condition);
+        $this->db->limit(1);
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            return false;
+        } else {
+            return true;
         }
     }
 

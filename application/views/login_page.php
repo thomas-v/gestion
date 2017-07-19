@@ -25,6 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo form_input($password);
             ?>
             <?php
+                echo form_error('confirm_password_register');
+                $confirmation_password = array('name'=>'confirm_password_register', 'placeholder'=>'confirmation du mot de passe', 'type' => 'password');
+                echo form_input($confirmation_password);
+            ?>
+            <?php
                 echo form_error('email_register');
                 $email = array('name'=>'email_register', 'placeholder'=>'Adresse mail', 'value'=>set_value('email_register'));
                 echo form_input($email);
