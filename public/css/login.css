@@ -88,3 +88,9 @@
 .container .info span .fa {
     color: #EF3B3A;
 }
+
+.form p{
+    font-size:12px;
+    color:red;
+    margin-top:0px;
+}
