@@ -18,7 +18,7 @@ class Home extends CI_Controller
 
     // gestion de l'enregistrement d'un user
     public function register_validation(){
-        $this->form_validation->set_rules('pseudo_register', '"pseudo"', 'trim|required|xss_clean|min_length[5]|callback_pseudo_check', array('pseudo_check' => 'Le pseudo doit posséder au minimum 5 caractères, être alphanumérique et peut contenir le caractère _'));
+        $this->form_validation->set_rules('pseudo_register', '"pseudo"', 'trim|xss_clean|min_length[5]|callback_pseudo_check|required', array('pseudo_check' => 'Le pseudo doit posséder au minimum 5 caractères, être alphanumérique et peut contenir le caractère _'));
 
         $this->form_validation->set_rules('password_register', '"mot de passe"', 'trim|required|xss_clean|min_length[5]|matches[confirm_password_register]|callback_password_check', array('password_check' => 'Le mot de passe doit posséder au minimum 5 caractères, être alphanumérique et peut contenir les caractères _ - &'));
 
@@ -37,6 +37,8 @@ class Home extends CI_Controller
             $email = $this->input->post('email_register');
             $password = $this->input->post('password_register');
             $pseudo = $this->input->post('pseudo_register');
+
+
 
         }
     }
@@ -72,30 +74,26 @@ class Home extends CI_Controller
     //regex sur le pseudo
     public function pseudo_check($str)
     {
-
-        if (1 !== preg_match("`^([a-zA-Z0-9_]{2,36})$`", $str))
+        if (1 !== preg_match("`^([a-zA-Z0-9_]{0,36})$`", $str))
         {
-            return FALSE;
+            return false;
         }
         else
         {
-            return TRUE;
+            return true;
         }
-
     }
 
     //regex sur le mot de passe
     public function password_check($str)
     {
-
-        if (1 !== preg_match("`^([a-zA-Z0-9_-]{2,36})$`", $str))
+        if (1 !== preg_match("`^([a-zA-Z0-9_-]{0,36})$`", $str))
         {
-            return FALSE;
+            return false;
         }
         else
         {
-            return TRUE;
+            return true;
         }
-
     }
 }
