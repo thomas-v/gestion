@@ -18,9 +18,9 @@ class Home extends CI_Controller
 
     // gestion de l'enregistrement d'un user
     public function register_validation(){
-        $this->form_validation->set_rules('pseudo_register', '"pseudo"', 'trim|required|xss_clean|min_length[5]|alpha_numeric');
+        $this->form_validation->set_rules('pseudo_register', '"pseudo"', 'trim|required|xss_clean|min_length[5]|callback_pseudo_check', array('pseudo_check' => 'Le pseudo doit posséder au minimum 5 caractères, être alphanumérique et peut contenir le caractère _'));
 
-        $this->form_validation->set_rules('password_register', '"mot de passe"', 'trim|required|xss_clean|min_length[5]|matches[confirm_password_register]');
+        $this->form_validation->set_rules('password_register', '"mot de passe"', 'trim|required|xss_clean|min_length[5]|matches[confirm_password_register]|callback_password_check', array('password_check' => 'Le mot de passe doit posséder au minimum 5 caractères, être alphanumérique et peut contenir les caractères _ - &'));
 
         $this->form_validation->set_rules('confirm_password_register', '"confirmation du mot de passe"', 'trim|required|xss_clean|min_length[5]');
 
@@ -66,6 +66,36 @@ class Home extends CI_Controller
         $statut_email = $this->login_database->get_by_email($email);
 
         return $statut_email;
+
+    }
+
+    //regex sur le pseudo
+    public function pseudo_check($str)
+    {
+
+        if (1 !== preg_match("`^([a-zA-Z0-9_]{2,36})$`", $str))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+
+    }
+
+    //regex sur le mot de passe
+    public function password_check($str)
+    {
+
+        if (1 !== preg_match("`^([a-zA-Z0-9_-]{2,36})$`", $str))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
 
     }
 }
