@@ -39,8 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?= form_close(); ?>
         <?= form_open('home/login_validation', array('class' => 'login-form')); ?>
             <?php
-                echo form_error('pseudo_login');
-                $pseudo = array('name'=>'pseudo_login', 'placeholder'=>'pseudo', 'value'=>set_value('pseudo_login'));
+                echo "<p>".$this->session->flashdata('error_message')."</p>";
+                echo form_error('email_login');
+                $pseudo = array('name'=>'email_login', 'placeholder'=>'Adresse mail', 'value'=>set_value('email_login'));
                 echo form_input($pseudo);
             ?>
             <?php
