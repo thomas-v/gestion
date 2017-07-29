@@ -13,3 +13,13 @@ CREATE TABLE IF NOT EXISTS `user_login` (
   `user_password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `statistical` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `begin` datetime NULL,
+  `end` datetime NULL,
+  `user_agent` varchar(255) NOT NULL,
+  `user_ip` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);

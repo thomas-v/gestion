@@ -70,7 +70,7 @@ class Home extends CI_Controller
 
             if($user = $this->login_database->validate_user($email)){
                 if($password == $this->encryption->decrypt($user[0]->user_password)){
-                    $this->login($user[0]->user_email, $user[0]->user_name);
+                    $this->login($user[0]->user_email, $user[0]->user_name, $user[0]->id);
                 }
             }
             $this->session->set_flashdata('error_message', 'L\'email ou le mot de passe est incorrect');
@@ -116,10 +116,11 @@ class Home extends CI_Controller
     }
 
     //connection
-    public function login($email, $pseudo){
+    public function login($email, $pseudo, $id){
+        $this->session->set_userdata('user_id', $id);
         $this->session->set_userdata('user_email', $email);
         $this->session->set_userdata('user_pseudo', $pseudo);
 
-        redirect('/jobs/list');
+        //redirect('/jobs/list');
     }
 }
