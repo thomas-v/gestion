@@ -121,6 +121,9 @@ class Home extends CI_Controller
         $this->session->set_userdata('user_email', $email);
         $this->session->set_userdata('user_pseudo', $pseudo);
 
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $user_ip = $_SERVER["REMOTE_ADDR"];
+
         //redirect('/jobs/list');
     }
 }
