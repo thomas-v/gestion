@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="welcome_page">
     <div id="main" class="bloc">
-        <div class="title">Looking for Work</div>
+        <div class="title"><a href="<?= base_url() ?>index.php/welcome">Looking for Work</a></div>
     </div>
     <div id="category" class="bloc">
         <span>Ajouter une catégorie d'emploi</span> <br>(magasinier, comptable, informatique ...)
@@ -38,9 +38,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span>Accéder à la liste des demandes d'emploi</span> <br>(par catégorie)
         <?= form_open('jobs/list'); ?>
         <select>
-            <option>Select an Option</option>
-            <option>Option 1</option>
-            <option>Option 2</option>
+            <?php foreach ($categorys as $category){?>
+                <option value="<?= $category->id ?>"><?= $category->name ?></option>
+            <?php }?>
         </select>
         <?= form_submit('submit', 'Visualiser'); ?>
         <?= form_close(); ?>
@@ -48,10 +48,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="delete_category" class="bloc">
         <span>Supprimer une catégorie d'emploi</span> <br>(cela aura pour conséquence de supprimer toutes les demandes d'emploi de cette catégorie)
         <?= form_open('category/delete'); ?>
-        <select>
-            <option>Select an Option</option>
-            <option>Option 1</option>
-            <option>Option 2</option>
+        <?php if(isset($validate_form_message)){ ?>
+            <?php if(isset($delete_success) && $delete_success == true){ ?>
+                <p class='success'><?= $validate_form_message ?></p>
+            <?php }
+            else { ?>
+                <p><?= $validate_form_message ?></p>
+            <?php } ?>
+        <?php }
+        else {?>
+            <p></p>
+        <?php } ?>
+        <select name='category'>
+            <?php foreach ($categorys as $category){?>
+                <option value="<?= $category->id ?>"><?= $category->name ?></option>
+            <?php }?>
         </select>
         <?= form_submit('submit', 'Supprimer'); ?>
         <?= form_close(); ?>

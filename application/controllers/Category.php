@@ -19,6 +19,7 @@ class Category extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $data['add_no_success'] = true;
+            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
             $this->load->view('welcome_page', $data);
 
         }
@@ -33,7 +34,8 @@ class Category extends CI_Controller
             $this->db->insert('category', $data);
 
             $this->session->set_flashdata('add_success', "La catégorie '$category' a bien été ajouté");
-            $this->load->view('welcome_page');
+            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
+            $this->load->view('welcome_page', $data);
         }
     }
 
@@ -45,5 +47,28 @@ class Category extends CI_Controller
 
         return $statut_category;
 
+    }
+
+    //supprime une categorie
+    public function delete(){
+
+        $category = $this->input->post('category');
+
+        if ($category != NULL) {
+            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
+
+            //suppression
+            $this->category_database->delete_by_id($this->session->userdata('user_id'), $category);
+
+            $data['validate_form_message'] = "La catégorie '$category' a bien été supprimé";
+            $data['delete_success'] = true;
+
+            $this->load->view('welcome_page', $data);
+        }
+        else{
+            $data['validate_form_message'] = "Une catégorie est nécessaire à selectionner";
+            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
+            $this->load->view('welcome_page', $data);
+        }
     }
 }

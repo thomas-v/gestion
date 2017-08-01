@@ -10,7 +10,7 @@ Class Category_database_model extends CI_Model {
         parent::__construct();
     }
 
-    function validate_name($name, $user_id) {
+    public function validate_name($name, $user_id) {
         // Build a query to retrieve the user's details
         // based on the received username and password
         $this->db->from('category');
@@ -24,6 +24,23 @@ Class Category_database_model extends CI_Model {
         else{
             return true;
         }
+    }
+
+    public function get_category_by_user($user_id){
+        $this->db->select('name');
+        $this->db->select('id');
+        $this->db->from('category');
+        $this->db->where('user_id',$user_id );
+        $this->db->order_by("name","asc");
+        $cats_user = $this->db->get()->result();
+
+        return $cats_user;
+    }
+
+    public function delete_by_id($user_id, $category_id){
+        $this->db->where('user_id', $user_id);
+        $this->db->where('id', $category_id);
+        $this->db->delete('category');
     }
 
 }

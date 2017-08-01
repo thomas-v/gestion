@@ -99,6 +99,8 @@ form button, input[type="submit"] {
     margin-bottom: 0px;
 }
 
+
+
 form p{
     font-size:12px;
     color:red;
@@ -107,4 +109,9 @@ form p{
 
 .success{
     color:green;
+}
+
+#delete_category form select{
+    margin-top:0px;
+    margin-bottom: 0px;
 }
