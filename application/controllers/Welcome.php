@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('category_database_model', 'category_database');
+        $this->output->enable_profiler(true);
 
     }
 

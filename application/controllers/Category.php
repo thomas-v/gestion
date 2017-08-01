@@ -55,18 +55,21 @@ class Category extends CI_Controller
         $category = $this->input->post('category');
 
         if ($category != NULL) {
-            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
+
 
             //suppression
             $this->category_database->delete_by_id($this->session->userdata('user_id'), $category);
 
-            $data['validate_form_message'] = "La catégorie '$category' a bien été supprimé";
+            $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
+
+            $data['validate_form_message'] = "La catégorie a bien été supprimé";
             $data['delete_success'] = true;
 
             $this->load->view('welcome_page', $data);
         }
         else{
             $data['validate_form_message'] = "Une catégorie est nécessaire à selectionner";
+            $data['delete_success'] = false;
             $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
             $this->load->view('welcome_page', $data);
         }

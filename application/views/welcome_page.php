@@ -48,13 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="delete_category" class="bloc">
         <span>Supprimer une catégorie d'emploi</span> <br>(cela aura pour conséquence de supprimer toutes les demandes d'emploi de cette catégorie)
         <?= form_open('category/delete'); ?>
-        <?php if(isset($validate_form_message)){ ?>
-            <?php if(isset($delete_success) && $delete_success == true){ ?>
-                <p class='success'><?= $validate_form_message ?></p>
-            <?php }
-            else { ?>
-                <p><?= $validate_form_message ?></p>
-            <?php } ?>
+        <?php if(isset($delete_success)){ ?>
+                <?php if($delete_success == true) {?>
+                    <p class='success'><?= $validate_form_message ?></p>
+                <?php } else { ?>
+                    <p><?= $validate_form_message ?></p>
+                <?php } ?>
         <?php }
         else {?>
             <p></p>
