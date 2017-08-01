@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+#welcome_page {
+    width: 1200px;
+    padding: 0% 0 0;
+    margin: auto;
+    margin-top:150px;
+}
+
+#category{
+    width:550px;
+    margin-left:0px;
+    padding-top:20px;
+    display: inline-block;
+}
+#category span{
+    font-weight: bold;
+    font-size:17px;
+}
+#category:not(span){
+    font-size:10px;
+}
+#list{
+    width:550px;
+    margin-right:0px;
+    padding-top:20px;
+    display:inline-block;
+    float:right;
+}
+#list span{
+    font-weight: bold;
+    font-size:17px;
+    color:black;
+}
+#list:not(span){
+    font-size:10px;
+}
+#list select{
+    margin-top:30px;
+    margin-bottom: 0px;
+}
+.bloc{
+    background: #FFFFFF;
+    margin: 0 auto 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.title{
+    padding-top:20px;
+}
+
+form input , form select{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 300px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+#category form input[type="text"]{
+    margin-top:30px;
+    margin-bottom: 0px;
+}
+form button, input[type="submit"] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #9932CC;
+    width: 300px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-top:15px;
+}
+
+#delete_category{
+    width:550px;
+    margin-left:0px;
+    padding-top:20px;
+}
+#delete_category span{
+    font-weight: bold;
+    font-size:17px;
+    color:black;
+}
+#delete_category:not(span){
+    font-size:10px;
+    color: red;
+}
+#delete_category select{
+    margin-top:30px;
+    margin-bottom: 0px;
+}
+
+

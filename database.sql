@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `user_login` (
 CREATE TABLE IF NOT EXISTS `statistical` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `begin` datetime NULL,
+  `begin` datetime DEFAULT NOW(),
   `end` datetime NULL,
   `user_agent` varchar(255) NOT NULL,
   `user_ip` varchar(255) NOT NULL,

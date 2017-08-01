@@ -8,8 +8,14 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->output->enable_profiler(true);
+
+        if(!$this->session->userdata('user_email')){
+            //redirect('/welcome');
+        }
+
+        //$this->output->enable_profiler(true);
         $this->load->model('login_database_model', 'login_database');
+        $this->load->model('statistical_database_model', 'stats_database');
     }
 
     public function index()
@@ -124,6 +130,10 @@ class Home extends CI_Controller
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $user_ip = $_SERVER["REMOTE_ADDR"];
 
-        //redirect('/jobs/list');
+        $stats_id = $this->stats_database->open_connection($id, $user_agent, $user_ip);
+
+        $this->session->set_userdata('stats_id', $stats_id);
+
+        redirect('/welcome');
     }
 }

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Welcome to CodeIgniter</title>
+    <title>Looking for Work - Connection</title>
 
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/base.css"/>
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/login.css"/>
@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="login-page">
     <div class="form">
+        <div class="title">Looking for Work</div>
         <?= form_open('home/register_validation', array('class' => 'register-form')); ?>
             <?php
                 echo form_error('pseudo_register');
