@@ -19,8 +19,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span>Ajouter une catégorie d'emploi</span> <br>(magasinier, comptable, informatique ...)
         <?= form_open('category/add'); ?>
             <?php
-                if(!isset($add_no_success)){
+                if(!isset($add_no_success) && !isset($delete_success)){
                     echo "<p class='success'>".$this->session->flashdata('add_success')."</p>";
+                }
+                else{
+                    echo "<p></p>";
                 }
                 echo form_error('category');
                 if(isset($add_no_success)) {
