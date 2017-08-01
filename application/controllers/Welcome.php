@@ -8,11 +8,11 @@ class Welcome extends CI_Controller {
         parent::__construct();
         $this->load->model('category_database_model', 'category_database');
         $this->output->enable_profiler(true);
-
     }
 
 	public function index()
 	{
+
 	    $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
 
 
