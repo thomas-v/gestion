@@ -14,6 +14,7 @@ class Opportunities extends CI_Controller {
 	{
         $category = $this->input->post('category');
 
+        //recuperation du nom de la catégorie
         if ($category != NULL) {
             $cat = $this->category_database->get_category_by_id($category, $this->session->userdata('user_id'));
             $data['category_name'] = $cat[0]->name;

@@ -22,12 +22,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table id="example" class="display" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Entreprise</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Contact par courrier</th>
+                <th>Contact par email</th>
+                <th>Contact téléphonique</th>
             </tr>
             </thead>
             <tfoot>

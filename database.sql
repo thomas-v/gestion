@@ -31,3 +31,31 @@ CREATE TABLE IF NOT EXISTS `category` (
   `date` datetime DEFAULT NOW(),
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `opportunities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `company` varchar(255) NOT NULL,
+  `adress` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `postal_code` varchar(255) NOT NULL,
+  `post` boolean DEFAULT false,
+  `email` boolean DEFAULT false,
+  `phone` boolean DEFAULT false,
+  `interview` boolean DEFAULT false,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `opportunitie_id` int(11) NOT NULL,
+  `type_contact_id` int(11) NOT NULL,
+  `date` datetime DEFAULT NOW(),
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `tye_contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
