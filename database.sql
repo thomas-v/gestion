@@ -54,8 +54,16 @@ CREATE TABLE IF NOT EXISTS `contact` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `tye_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `type_contact` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+TRUNCATE TABLE `type_contact`;
+
+INSERT INTO `type_contact` (`id`, `name`) VALUES (1, 'post');
+INSERT INTO `type_contact` (`id`, `name`) VALUES (2, 'email');
+INSERT INTO `type_contact` (`id`, `name`) VALUES (3, 'phone');
+INSERT INTO `type_contact` (`id`, `name`) VALUES (4, 'phone_relaunch');
+INSERT INTO `type_contact` (`id`, `name`) VALUES (5, 'interview');
