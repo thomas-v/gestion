@@ -43,6 +43,16 @@ Class Category_database_model extends CI_Model {
         $this->db->delete('category');
     }
 
+    public function get_category_by_id($cat_id, $user_id){
+        $this->db->select('name');
+        $this->db->from('category');
+        $this->db->where('user_id',$user_id );
+        $this->db->where('id',$cat_id );
+        $cat_name = $this->db->get()->result();
+
+        return $cat_name;
+    }
+
 }
 
 ?>

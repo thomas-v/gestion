@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+#opportunities_list_page {
+    width: 1200px;
+    padding: 0% 0 0;
+    margin: auto;
+    margin-top:150px;
+}
+.bloc{
+    background: #FFFFFF;
+    margin: 0 auto 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.title{
+    padding-top:20px;
+}
+#list{
+    width:100%;
+    padding-top:20px;
+}
+#list span{
+    font-weight: bold;
+    font-size:17px;
+    text-transform: uppercase;
+}
+#list:not(span){
+    font-size:12px;
+}

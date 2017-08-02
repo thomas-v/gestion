@@ -38,11 +38,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?= form_close(); ?>
     </div>
     <div id="list" class="bloc">
-        <span>Accéder à la liste des demandes d'emploi</span> <br>(par catégorie)
+        <span>Accéder à la liste des demandes d'emploi</span> <br>(par catégorie d'emploi)
 
         <?php if(!empty($categorys)) {?>
-            <?= form_open('jobs/list'); ?>
-            <select>
+            <?= form_open('opportunities'); ?>
+            <?php if(isset($show_list_success)){ ?>
+                <?php if($show_list_success == false) { ?>
+                    <p><?= $show_list_form_message ?></p>
+                <?php } else { ?>
+                    <p></p>
+                <?php } ?>
+            <?php }
+            else {?>
+                <p></p>
+            <?php } ?>
+            <select name='category'>
                 <?php foreach ($categorys as $category){?>
                     <option value="<?= $category->id ?>"><?= $category->name ?></option>
                 <?php }?>
