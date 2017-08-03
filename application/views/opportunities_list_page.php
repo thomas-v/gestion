@@ -56,9 +56,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="add_opportunitie" class="bloc">
         <span>Ajouter une société</span>
-        <?= form_open('category/add'); ?>
+        <?= form_open('opportunities/add'); ?>
         <?php
-
+            echo form_error('name');
+            echo form_error('adress');
+            echo form_error('city');
+            echo form_error('postal_code');
             $name = array('name' => 'name', 'placeholder' => 'Entreprise', 'value' => set_value('name'));
             echo form_input($name);
 
@@ -177,6 +180,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
             </div>
         </div>
+
+        <input type="hidden" name="category_id" value="<?= $category_id ?>">
+
         <?= form_submit('submit', 'Ajouter'); ?>
         <?= form_close(); ?>
     </div>

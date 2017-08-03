@@ -108,3 +108,8 @@ form input , form select{
 #add_opportunitie form #post_date, #add_opportunitie form #email_date, #add_opportunitie form #phone_date, #add_opportunitie form #phone_relaunch_date, #add_opportunitie form #interview_date{
     visibility:hidden;
 }
+
+#add_opportunitie form p{
+    color:red;
+    font-size:12px;
+}
