@@ -19,47 +19,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="list" class="bloc">
         <span><?= $category_name ?></span><br>Liste des demandes d'emploi affiliées
 
-        <table id="example" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Entreprise</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Code postal</th>
-                <th>Contact par courrier</th>
-                <th>Contact par email</th>
-                <th>Contact téléphonique</th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-            </tfoot>
-            <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            </tbody>
-        </table>
+        <div id="opportunities_table">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Entreprise</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Code postal</th>
+                    <th>Contact par courrier</th>
+                    <th>Contact par email</th>
+                    <th>Contact téléphonique</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Entreprise</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Code postal</th>
+                    <th>Contact par courrier</th>
+                    <th>Contact par email</th>
+                    <th>Contact téléphonique</th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                    <td>$170,750</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
@@ -67,7 +72,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable({
+            "bLengthChange": false
+        });
     } );
 </script>
 

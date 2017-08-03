@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 #opportunities_list_page {
-    width: 1200px;
+    width: 1000px;
     padding: 0% 0 0;
     margin: auto;
     margin-top:150px;
@@ -26,4 +26,11 @@
 }
 #list:not(span){
     font-size:12px;
+}
+
+#opportunities_table{
+    padding-top:40px;
+    margin:auto;
+    width:800px;
+    padding-bottom: 40px;
 }
