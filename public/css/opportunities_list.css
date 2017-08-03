@@ -34,3 +34,77 @@
     width:800px;
     padding-bottom: 40px;
 }
+
+#add_opportunitie{
+    padding-top:20px;
+}
+#add_opportunitie span{
+    font-weight: bold;
+    font-size:17px;
+    margin-bottom: 20px;
+}
+#add_opportunitie:not(span){
+    font-size:10px;
+}
+
+form button, input[type="submit"] {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #9932CC;
+    width: 300px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-top:15px;
+}
+
+#add_opportunitie form{
+    width:630px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+form input , form select{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 300px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+#add_opportunitie form .checkbox_date input[type="checkbox"]{
+    width:auto;
+    margin-left:0px;
+    float:left;
+}
+
+#add_opportunitie form .checkbox_date{
+    width:100%;
+}
+
+#add_opportunitie form .checkbox_date .checkbox{
+    width:300px;
+    display:inline-block;
+}
+#add_opportunitie form .checkbox_date .checkbox label{
+    font-size:15px;
+    font-weight:bold;
+}
+#add_opportunitie form .checkbox_date .date{
+    width:300px;
+    display:inline-block;
+}
+
+#add_opportunitie form #post_date, #add_opportunitie form #email_date, #add_opportunitie form #phone_date, #add_opportunitie form #phone_relaunch_date, #add_opportunitie form #interview_date{
+    visibility:hidden;
+}

@@ -30,6 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Contact par courrier</th>
                     <th>Contact par email</th>
                     <th>Contact téléphonique</th>
+                    <th>Relance téléphonique</th>
+                    <th>Entretien</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -41,30 +43,142 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Contact par courrier</th>
                     <th>Contact par email</th>
                     <th>Contact téléphonique</th>
+                    <th>Relance téléphonique</th>
+                    <th>Entretien</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011/04/25</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                </tr>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011/07/25</td>
-                    <td>$170,750</td>
-                    <td>$170,750</td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div id="add_opportunitie" class="bloc">
+        <span>Ajouter une société</span>
+        <?= form_open('category/add'); ?>
+        <?php
+
+            $name = array('name' => 'name', 'placeholder' => 'Entreprise', 'value' => set_value('name'));
+            echo form_input($name);
+
+            $adress = array('name' => 'adress', 'placeholder' => 'Adresse', 'value' => set_value('adress'));
+            echo form_input($adress);
+
+            $city = array('name' => 'city', 'placeholder' => 'Ville', 'value' => set_value('city'));
+            echo form_input($city);
+
+            $postal_code = array('name' => 'postal_code', 'placeholder' => 'Code postal', 'value' => set_value('postal_code'));
+            echo form_input($postal_code);
+
+        ?>
+
+        <div class="checkbox_date">
+            <div class="checkbox">
+                <?php
+                    $data = array(
+                        'name'          => 'post',
+                        'value'         => 'accept',
+                        'checked'       => FALSE,
+                        'id'            => 'post'
+                    );
+                    echo form_checkbox($data);
+                    echo "<label for='post'>Contact par courrier</label>";
+                ?>
+            </div>
+            <div class="date">
+                <?php
+                    $post_date = array('name' => 'post_date', 'placeholder' => 'AAAA-MM-JJ', 'value' => set_value('post_date'), 'id' => 'post_date');
+                    echo form_input($post_date);
+                ?>
+            </div>
+        </div>
+
+        <div class="checkbox_date">
+            <div class="checkbox">
+                <?php
+                $data = array(
+                    'name'          => 'email',
+                    'value'         => 'accept',
+                    'checked'       => FALSE,
+                    'id'            => 'email'
+                );
+                echo form_checkbox($data);
+                echo "<label for='email'>Contact par email</label>";
+                ?>
+            </div>
+            <div class="date">
+                <?php
+                $email_date = array('name' => 'email_date', 'placeholder' => 'AAAA-MM-JJ', 'value' => set_value('email_date'), 'id' => 'email_date');
+                echo form_input($email_date);
+                ?>
+            </div>
+        </div>
+
+        <div class="checkbox_date">
+            <div class="checkbox">
+                <?php
+                $data = array(
+                    'name'          => 'phone',
+                    'value'         => 'accept',
+                    'checked'       => FALSE,
+                    'id'            => 'phone'
+                );
+                echo form_checkbox($data);
+                echo "<label for='phone'>Contact par téléphone</label>";
+                ?>
+            </div>
+            <div class="date">
+                <?php
+                $phone_date = array('name' => 'phone_date', 'placeholder' => 'AAAA-MM-JJ', 'value' => set_value('phone_date'), 'id' => 'phone_date');
+                echo form_input($phone_date);
+                ?>
+            </div>
+        </div>
+
+        <div class="checkbox_date">
+            <div class="checkbox">
+                <?php
+                $data = array(
+                    'name'          => 'phone_relaunch',
+                    'value'         => 'accept',
+                    'checked'       => FALSE,
+                    'id'            => 'phone_relaunch'
+                );
+                echo form_checkbox($data);
+                echo "<label for='phone_relaunch'>Relance par téléphone</label>";
+                ?>
+            </div>
+            <div class="date">
+                <?php
+                $phone_relaunch_date = array('name' => 'phone_relaunch_date', 'placeholder' => 'AAAA-MM-JJ', 'value' => set_value('phone_relaunch_date'), 'id' => 'phone_relaunch_date');
+                echo form_input($phone_relaunch_date);
+                ?>
+            </div>
+        </div>
+
+        <div class="checkbox_date">
+            <div class="checkbox">
+                <?php
+                $data = array(
+                    'name'          => 'interview',
+                    'value'         => 'accept',
+                    'checked'       => FALSE,
+                    'id'            => 'interview'
+                );
+                echo form_checkbox($data);
+                echo "<label for='interview'>Entretien d'embauche</label>";
+                ?>
+            </div>
+            <div class="date">
+                <?php
+                $interview_date = array('name' => 'interview_date', 'placeholder' => 'AAAA-MM-JJ HH-MM--SS', 'value' => set_value('interview_date'), 'id' => 'interview_date');
+                echo form_input($interview_date);
+                ?>
+            </div>
+        </div>
+        <?= form_submit('submit', 'Ajouter'); ?>
+        <?= form_close(); ?>
     </div>
 </div>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
@@ -73,11 +187,80 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
-            "bLengthChange": false
+            "bLengthChange": false,
+            language: {
+                processing:     "Traitement en cours...",
+                search:         "Rechercher&nbsp;:",
+                lengthMenu:     "Afficher _MENU_ &eacute;l&eacute;ments",
+                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix:    "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                emptyTable:     "Aucune demande d'emploi n'a été ajouté",
+                paginate: {
+                    first:      "Premier",
+                    previous:   "Pr&eacute;c&eacute;dent",
+                    next:       "Suivant",
+                    last:       "Dernier"
+                },
+                aria: {
+                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
         });
     } );
 </script>
 
+<script>
+
+    $('#post:checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            $("#post_date").css('visibility', 'visible');
+        } else {
+            $("#post_date").css('visibility', 'hidden');
+            $("#post_date").val("");
+        }
+    });
+
+    $('#email:checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            $("#email_date").css('visibility', 'visible');
+        } else {
+            $("#email_date").css('visibility', 'hidden');
+            $("#email_date").val("");
+        }
+    });
+
+    $('#phone:checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            $("#phone_date").css('visibility', 'visible');
+        } else {
+            $("#phone_date").css('visibility', 'hidden');
+            $("#phone_date").val("");
+        }
+    });
+
+    $('#phone_relaunch:checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            $("#phone_relaunch_date").css('visibility', 'visible');
+        } else {
+            $("#phone_relaunch_date").css('visibility', 'hidden');
+            $("#phone_relaunch_date").val("");
+        }
+    });
+
+    $('#interview:checkbox').change(function () {
+        if ($(this).is(':checked')) {
+            $("#interview_date").css('visibility', 'visible');
+        } else {
+            $("#interview_date").css('visibility', 'hidden');
+            $("#interview_date").val("");
+        }
+    });
+</script>
 
 </body>
 </html>
