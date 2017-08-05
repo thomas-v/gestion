@@ -66,6 +66,15 @@ class Opportunities extends CI_Controller {
             $this->load->view('opportunities_list_page', $data);
         }
         else{
+            $category_id = $this->input->post('category_id');
+            $cat = $this->category_database->get_category_by_id($category_id, $this->session->userdata('user_id'));
+
+            $data['category_id'] = $category_id;
+            $data['company'] = $this->input->post('name');
+            $data['adress'] = $this->input->post('adress');
+            $data['city'] = $this->input->post('city');
+            $data['postal_code'] = $this->input->post('postal_code');
+
 
         }
     }

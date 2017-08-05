@@ -7,7 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Looking for Work - Opportunités d'emploi</title>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/base.css"/>
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/opportunities_list.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css"/>

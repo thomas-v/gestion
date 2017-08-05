@@ -39,10 +39,6 @@ CREATE TABLE IF NOT EXISTS `opportunities` (
   `adress` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `postal_code` varchar(255) NOT NULL,
-  `post` boolean DEFAULT false,
-  `email` boolean DEFAULT false,
-  `phone` boolean DEFAULT false,
-  `interview` boolean DEFAULT false,
   PRIMARY KEY (`id`)
 );
 
