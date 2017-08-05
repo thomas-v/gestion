@@ -62,6 +62,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo form_error('adress');
             echo form_error('city');
             echo form_error('postal_code');
+            echo form_error('post_date');
+            echo form_error('email_date');
+            echo form_error('phone_date');
+            echo form_error('phone_relaunch_date');
+            echo form_error('interview_date');
             $name = array('name' => 'name', 'placeholder' => 'Entreprise', 'value' => set_value('name'));
             echo form_input($name);
 
@@ -78,16 +83,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="checkbox_date">
             <div class="checkbox">
-                <?php
-                    $data = array(
-                        'name'          => 'post',
-                        'value'         => 'accept',
-                        'checked'       => FALSE,
-                        'id'            => 'post'
-                    );
-                    echo form_checkbox($data);
-                    echo "<label for='post'>Contact par courrier</label>";
-                ?>
+                <input type="checkbox" id="post" value="1" name="post"<?= set_checkbox('post', '1', false) ?>/>
+                <label for='post'>Contact par courrier</label>";
             </div>
             <div class="date">
                 <?php
@@ -99,16 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="checkbox_date">
             <div class="checkbox">
-                <?php
-                $data = array(
-                    'name'          => 'email',
-                    'value'         => 'accept',
-                    'checked'       => FALSE,
-                    'id'            => 'email'
-                );
-                echo form_checkbox($data);
-                echo "<label for='email'>Contact par email</label>";
-                ?>
+                <input type="checkbox" id="email" value="1" name="email"<?= set_checkbox('email', '1', false) ?>/>
+                <label for='email'>Contact par email</label>
+
             </div>
             <div class="date">
                 <?php
@@ -120,16 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="checkbox_date">
             <div class="checkbox">
-                <?php
-                $data = array(
-                    'name'          => 'phone',
-                    'value'         => 'accept',
-                    'checked'       => FALSE,
-                    'id'            => 'phone'
-                );
-                echo form_checkbox($data);
-                echo "<label for='phone'>Contact par téléphone</label>";
-                ?>
+                <input type="checkbox" id="phone" value="1" name="phone"<?= set_checkbox('phone', '1', false) ?>/>
+                <label for='phone'>Contact par téléphone</label>
             </div>
             <div class="date">
                 <?php
@@ -141,16 +123,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="checkbox_date">
             <div class="checkbox">
-                <?php
-                $data = array(
-                    'name'          => 'phone_relaunch',
-                    'value'         => 'accept',
-                    'checked'       => FALSE,
-                    'id'            => 'phone_relaunch'
-                );
-                echo form_checkbox($data);
-                echo "<label for='phone_relaunch'>Relance par téléphone</label>";
-                ?>
+                <input type="checkbox" id="phone_relaunch" value="1" name="phone_relaunch"<?= set_checkbox('phone_relaunch', '1', false) ?>/>
+                <label for='phone_relaunch'>Relance par téléphone</label>
+
             </div>
             <div class="date">
                 <?php
@@ -162,16 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="checkbox_date">
             <div class="checkbox">
-                <?php
-                $data = array(
-                    'name'          => 'interview',
-                    'value'         => 'accept',
-                    'checked'       => FALSE,
-                    'id'            => 'interview'
-                );
-                echo form_checkbox($data);
-                echo "<label for='interview'>Entretien d'embauche</label>";
-                ?>
+                <input type="checkbox" id="interview" value="1" name="interview"<?= set_checkbox('interview', '1', false) ?>/>
+                <label for='interview'>Entretien d'embauche</label>
             </div>
             <div class="date">
                 <?php
@@ -264,6 +231,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         } else {
             $("#interview_date").css('visibility', 'hidden');
             $("#interview_date").val("");
+        }
+    });
+
+    $( document ).ready(function() {
+        if ($('#post:checkbox').is(':checked')) {
+            $("#post_date").css('visibility', 'visible');
+        }
+
+        if ($('#email:checkbox').is(':checked')) {
+            $("#email_date").css('visibility', 'visible');
+        }
+
+        if ($('#phone:checkbox').is(':checked')) {
+            $("#phone_date").css('visibility', 'visible');
+        }
+
+        if ($('#phone_relaunch:checkbox').is(':checked')) {
+            $("#phone_relaunch_date").css('visibility', 'visible');
+        }
+
+        if ($('#interview:checkbox').is(':checked')) {
+            $("#interview_date").css('visibility', 'visible');
         }
     });
 </script>
