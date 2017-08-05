@@ -6,9 +6,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Looking for Work - Opportunités d'emploi</title>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/base.css"/>
     <link rel="stylesheet" href="<?php echo base_url();?>public/css/opportunities_list.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.css"/>
+    <link rel="stylesheet" href="<?php echo base_url();?>public/css/jquery-ui-timepicker-addon.css"/>
 </head>
 <body>
 
@@ -142,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="date">
                 <?php
-                $interview_date = array('name' => 'interview_date', 'placeholder' => 'AAAA-MM-JJ HH-MM--SS', 'value' => set_value('interview_date'), 'id' => 'interview_date');
+                $interview_date = array('name' => 'interview_date', 'placeholder' => 'AAAA-MM-JJ HH-MM', 'value' => set_value('interview_date'), 'id' => 'interview_date');
                 echo form_input($interview_date);
                 ?>
             </div>
@@ -156,6 +159,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<?php echo base_url();?>public/javascript/jquery-ui-timepicker-addon.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -254,6 +259,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         if ($('#interview:checkbox').is(':checked')) {
             $("#interview_date").css('visibility', 'visible');
         }
+
+        //mise en place des datpickers
+        $('#post_date').datetimepicker({'showTimepicker': false});
+        $('#email_date').datetimepicker({'showTimepicker': false});
+        $('#phone_date').datetimepicker({'showTimepicker': false});
+        $('#phone_relaunch_date').datetimepicker({'showTimepicker': false});
+        $('#interview_date').datetimepicker();
+
     });
 </script>
 
