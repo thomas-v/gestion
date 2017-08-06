@@ -16,7 +16,18 @@ class Opportunities extends CI_Controller {
         $category = $this->input->post('category');
 
         //recuperation du nom de la catégorie
-        if ($category != NULL) {
+        if ($category != NULL || $this->session->flashdata('category') || $this->session->flashdata('category_no_add')) {
+            if($this->session->flashdata('category')){
+                $category = $this->session->flashdata('category');
+                $data['add_success'] = 'L\'opportunité d\'emploi a bien été ajouté';
+
+                $this->session->set_flashdata('category_no_add', $category);
+            }
+            else if($this->session->flashdata('category_no_add')){
+                $category = $this->session->flashdata('category_no_add');
+
+                $this->session->set_flashdata('category_no_add', $category);
+            }
             $cat = $this->category_database->get_category_by_id($category, $this->session->userdata('user_id'));
             $data['category_name'] = $cat[0]->name;
             $data['category_id'] = $category;
@@ -126,14 +137,8 @@ class Opportunities extends CI_Controller {
                 $this->opportunities_database->add_contact($data);
             }
 
-
-            $category_id = $this->input->post('category_id');
-            $cat = $this->category_database->get_category_by_id($category_id, $this->session->userdata('user_id'));
-            $data['category_name'] = $cat[0]->name;
-            $data['category_id'] = $category_id;
-            $data['add_success'] = "Cette opportunité d'emploi chez ".$this->input->post('name')." a bien été ajouté";
-
-            $this->load->view('opportunities_list_page', $data);
+            $this->session->set_flashdata('category', $category_id);
+            redirect('/opportunities');
 
         }
     }
