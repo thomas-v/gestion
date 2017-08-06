@@ -60,6 +60,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <span>Ajouter une société</span>
         <?= form_open('opportunities/add'); ?>
         <?php
+            if(isset($add_success)){
+                echo "<p class='success'>".$add_success."</p>";
+            }
             echo form_error('name');
             echo form_error('adress');
             echo form_error('city');
@@ -260,11 +263,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         //mise en place des datpickers
-        $('#post_date').datetimepicker({'showTimepicker': false});
-        $('#email_date').datetimepicker({'showTimepicker': false});
-        $('#phone_date').datetimepicker({'showTimepicker': false});
-        $('#phone_relaunch_date').datetimepicker({'showTimepicker': false});
-        $('#interview_date').datetimepicker();
+        $('#post_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
+        $('#email_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
+        $('#phone_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
+        $('#phone_relaunch_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
+        $('#interview_date').datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm', showTimepicker: true});
 
     });
 </script>

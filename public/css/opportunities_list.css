@@ -113,3 +113,7 @@ form input , form select{
     color:red;
     font-size:12px;
 }
+
+#add_opportunitie form p.success{
+    color:green;
+}

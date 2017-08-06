@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `opportunitie_id` int(11) NOT NULL,
   `type_contact_id` int(11) NOT NULL,
-  `date` datetime DEFAULT NOW(),
+  `date` datetime NULL,
   PRIMARY KEY (`id`)
 );
 

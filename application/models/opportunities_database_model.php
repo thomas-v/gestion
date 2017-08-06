@@ -25,6 +25,17 @@ Class Opportunities_database_model extends CI_Model {
         }
     }
 
+    public function add_opportunitie($data){
+        $this->db->insert('opportunities', $data);
+        $insert_id = $this->db->insert_id();
+
+        return  $insert_id;
+    }
+
+    public function add_contact($data){
+        $this->db->insert('contact', $data);
+    }
+
 }
 
 ?>
