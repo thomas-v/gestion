@@ -31,6 +31,10 @@ class Opportunities extends CI_Controller {
             $cat = $this->category_database->get_category_by_id($category, $this->session->userdata('user_id'));
             $data['category_name'] = $cat[0]->name;
             $data['category_id'] = $category;
+
+            //recuperation de la liste des opportunités d'emploi
+            $opportunities_list = $this->opportunities_database->get_opportunities_by_category($category);
+
             $this->load->view('opportunities_list_page', $data);
         }
         else{

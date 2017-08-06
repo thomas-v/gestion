@@ -36,6 +36,17 @@ Class Opportunities_database_model extends CI_Model {
         $this->db->insert('contact', $data);
     }
 
+    public function get_opportunities_by_category($category_id){
+        $this->db->from('opportunities');
+        $this->db->where('category_id', $category_id );
+        $this->db->join('contact', 'contact.opportunitie_id = opportunities.id');
+        $opportunities = $this->db->get()->result();
+
+        dump($opportunities);
+
+        return $opportunities;
+    }
+
 }
 
 ?>
