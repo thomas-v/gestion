@@ -35,6 +35,24 @@ class Opportunities extends CI_Controller {
             //recuperation de la liste des opportunités d'emploi
             $opportunities_list = $this->opportunities_database->get_opportunities_by_category($category);
 
+            foreach ($opportunities_list as $key => $opportunitie){
+
+                $data['opportunities_list'][$key]['company'] = $opportunitie->company;
+                $data['opportunities_list'][$key]['adress'] = $opportunitie->adress;
+                $data['opportunities_list'][$key]['city'] = $opportunitie->city;
+                $data['opportunities_list'][$key]['postal_code'] = $opportunitie->postal_code;
+
+                $contacts = $this->opportunities_database->get_contact_by_opportunitie($opportunitie->id);
+
+                foreach ($contacts as $contact){
+                    if($contact->date == ''){
+                        $contact->date = 'Aucune date renseignée';
+                    }
+
+                    $data['opportunities_list'][$key][$contact->name] = 'Oui - '.$contact->date;
+                }
+            }
+
             $this->load->view('opportunities_list_page', $data);
         }
         else{

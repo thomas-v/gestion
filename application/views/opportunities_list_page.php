@@ -36,6 +36,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Entretien</th>
                 </tr>
                 </thead>
+
+                <?php if(isset($opportunities_list)){ ?>
+                    <tbody>
+                        <?php foreach ($opportunities_list as $opportunitie){ ?>
+                            <tr>
+                                <td><?= $opportunitie['company'] ?></td>
+                                <td><?= $opportunitie['adress'] ?></td>
+                                <td><?= $opportunitie['city'] ?></td>
+                                <td><?= $opportunitie['postal_code'] ?></td>
+                                <td><?php if(isset($opportunitie['post'])){ $opportunitie['post'] = str_replace(' 00:00:00', '', $opportunitie['post']);echo $opportunitie['post'];} else{echo '-';}  ?></td>
+                                <td><?php if(isset($opportunitie['email'])){$opportunitie['email'] = str_replace(' 00:00:00', '', $opportunitie['email']); echo $opportunitie['email'];} else{echo '-';}  ?></td>
+                                <td><?php if(isset($opportunitie['phone'])){$opportunitie['phone'] = str_replace(' 00:00:00', '', $opportunitie['phone']);echo $opportunitie['phone'];} else{echo '-';}  ?></td>
+                                <td><?php if(isset($opportunitie['phone_relaunch'])){$opportunitie['phone_relaunch'] = str_replace(' 00:00:00', '', $opportunitie['phone_relaunch']);echo $opportunitie['phone_relaunch'];} else{echo '-';}  ?></td>
+                                <td><?php if(isset($opportunitie['interview'])){$opportunitie['interview'] = substr($opportunitie['interview'], 0, -3);echo $opportunitie['interview'];} else{echo '-';}  ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                <?php } ?>
+
                 <tfoot>
                 <tr>
                     <th>Entreprise</th>
