@@ -34,6 +34,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Contact téléphonique</th>
                     <th>Relance téléphonique</th>
                     <th>Entretien</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
@@ -50,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?php if(isset($opportunitie['phone'])){$opportunitie['phone'] = str_replace(' 00:00:00', '', $opportunitie['phone']);echo $opportunitie['phone'];} else{echo '-';}  ?></td>
                                 <td><?php if(isset($opportunitie['phone_relaunch'])){$opportunitie['phone_relaunch'] = str_replace(' 00:00:00', '', $opportunitie['phone_relaunch']);echo $opportunitie['phone_relaunch'];} else{echo '-';}  ?></td>
                                 <td><?php if(isset($opportunitie['interview'])){$opportunitie['interview'] = substr($opportunitie['interview'], 0, -3);echo $opportunitie['interview'];} else{echo '-';}  ?></td>
+                            	<td>Modifier</td>
+                            	<td>Supprimer</td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -66,6 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Contact téléphonique</th>
                     <th>Relance téléphonique</th>
                     <th>Entretien</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -287,6 +293,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#phone_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
         $('#phone_relaunch_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
         $('#interview_date').datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm', showTimepicker: true});
+
+        
 
     });
 </script>

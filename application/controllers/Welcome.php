@@ -12,9 +12,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-
 	    $data['categorys'] = $this->category_database->get_category_by_user($this->session->userdata('user_id'));
-
 
 		$this->load->view('welcome_page', $data);
 	}

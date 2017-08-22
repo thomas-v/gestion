@@ -2,13 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Looking for Work - Connection</title>
+    <head>
+        <meta charset="utf-8">
+        <title>Looking for Work - Connection</title>
 
-    <link rel="stylesheet" href="<?php echo base_url();?>public/css/base.css"/>
-    <link rel="stylesheet" href="<?php echo base_url();?>public/css/login.css"/>
-</head>
+        <link rel="stylesheet" href="<?php echo base_url();?>public/css/base.css"/>
+        <link rel="stylesheet" href="<?php echo base_url();?>public/css/login.css"/>
+    </head>
 <body>
 
 <div class="login-page">
