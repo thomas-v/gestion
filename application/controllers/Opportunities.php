@@ -37,6 +37,7 @@ class Opportunities extends CI_Controller {
 
             foreach ($opportunities_list as $key => $opportunitie){
 
+                $data['opportunities_list'][$key]['id'] = $opportunitie->id;
                 $data['opportunities_list'][$key]['company'] = $opportunitie->company;
                 $data['opportunities_list'][$key]['adress'] = $opportunitie->adress;
                 $data['opportunities_list'][$key]['city'] = $opportunitie->city;

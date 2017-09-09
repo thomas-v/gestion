@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?php if(isset($opportunitie['phone_relaunch'])){$opportunitie['phone_relaunch'] = str_replace(' 00:00:00', '', $opportunitie['phone_relaunch']);echo $opportunitie['phone_relaunch'];} else{echo '-';}  ?></td>
                                 <td><?php if(isset($opportunitie['interview'])){$opportunitie['interview'] = substr($opportunitie['interview'], 0, -3);echo $opportunitie['interview'];} else{echo '-';}  ?></td>
                             	<td>Modifier</td>
-                            	<td>Supprimer</td>
+                            	<td data-id="<?= $opportunitie['id'] ?>">Supprimer</td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -182,6 +182,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <?= form_submit('submit', 'Ajouter'); ?>
         <?= form_close(); ?>
+        
+        <div id="dialog-confirm" title="Empty the recycle bin?">
+          <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+        </div>
     </div>
 </div>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
@@ -294,7 +298,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#phone_relaunch_date').datetimepicker({dateFormat: 'yy-mm-dd', showTimepicker: false});
         $('#interview_date').datetimepicker({dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm', showTimepicker: true});
 
+
+        $( "#target" ).click(function() {
+    	  alert( "Handler for .click() called." );
+    	});
         
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+              "Delete all items": function() {
+                $( this ).dialog( "close" );
+              },
+              Cancel: function() {
+                $( this ).dialog( "close" );
+              }
+            }
+          });
 
     });
 </script>
