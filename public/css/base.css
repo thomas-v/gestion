@@ -18,3 +18,6 @@ body {
 .success{
     color:green;
 }
+.hover{
+	cursor:pointer;
+}
