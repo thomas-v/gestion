@@ -201,8 +201,9 @@ class Opportunities extends CI_Controller {
             return false;
         }
     }
-
-
-
-
+    
+    public function delete(){
+        $opportunitie_id = $this->input->post('id');
+        $this->opportunities_database->delete($opportunitie_id);
+    }
 }

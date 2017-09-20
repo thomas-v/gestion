@@ -54,6 +54,11 @@ Class Opportunities_database_model extends CI_Model {
 
         return $contacts;
     }
+    
+    public function delete($opportunitie_id){
+        $this->db->where('id', $opportunitie_id);
+        $this->db->delete('opportunities');
+    }
 }
 
 ?>

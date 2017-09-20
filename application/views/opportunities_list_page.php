@@ -311,11 +311,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 "Supprimer": function() {
 
 				//traitement en ajax de la suppression
+				$.post({url: "opportunities/delete", success: function(result){
+					var td = document.querySelectorAll('[data-id="'+ opportunitie_id +'"]');
+					console.log(td);
+                }, error : function(resultat, statut, erreur){
+					alert(erreur);
+                }, data: { 
+                    id : opportunitie_id
+                }
+                });
                     
-                  $( this ).dialog( "close" );
+                  $( this ).dialog("close");
                 },
                 Annuler: function() {
-                  $( this ).dialog( "close" );
+                  $( this ).dialog("close");
                 }
               }
             });
