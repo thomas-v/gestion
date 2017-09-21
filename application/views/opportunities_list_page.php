@@ -312,8 +312,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				//traitement en ajax de la suppression
 				$.post({url: "opportunities/delete", success: function(result){
-					var td = document.querySelectorAll('[data-id="'+ opportunitie_id +'"]');
-					console.log(td);
+					
+					$.post(
+						{url: "opportunities", async: true, data: { 
+    		                    category : <?php echo $_POST['category'] ?>
+    		                }, success : function(result){
+    		                }
+		                }
+					);
+					
                 }, error : function(resultat, statut, erreur){
 					alert(erreur);
                 }, data: { 
