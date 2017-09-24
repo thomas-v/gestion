@@ -21,3 +21,6 @@ body {
 .hover{
 	cursor:pointer;
 }
+.hidden{
+	visibility: hidden;
+}

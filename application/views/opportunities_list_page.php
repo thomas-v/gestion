@@ -188,6 +188,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
+<?php $attributes = array('class' => 'hidden', 'id' => 'reload'); ?>
+<?= form_open('opportunities', $attributes); ?>
+    	<input type="text" value="<?= $category_id ?>" name="category">
+    <?= form_submit('submit', 'Visualiser'); ?>
+<?= form_close(); ?>
 <script src="<?php echo base_url();?>public/javascript/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -224,6 +229,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </script>
 
 <script>
+
 
     $('#post:checkbox').change(function () {
         if ($(this).is(':checked')) {
@@ -314,9 +320,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$.post({url: "opportunities/delete", success: function(result){
 					
 					$.post(
-						{url: "opportunities", async: true, data: { 
+						{url: "opportunities", cache: false, data: { 
     		                    category : <?php echo $_POST['category'] ?>
     		                }, success : function(result){
+    		                	$("#reload" ).submit();
     		                }
 		                }
 					);
@@ -336,10 +343,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               }
             });
     	});
-        
+
         
 
     });
+
+    
 </script>
 
 </body>
